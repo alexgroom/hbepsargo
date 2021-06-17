@@ -15,9 +15,3 @@ spec:
       storage: 100Gi
   storageClassName: thin
   volumeMode: Filesystem
-status:
-  phase: Bound
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 100Gi
