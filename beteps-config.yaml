@@ -2,10 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: >
-      {"apiVersion":"v1","data":{"BETFRONT_TBII_URL":"https://beteps.4781c9f1c6f17815.erlang-solutions.com","CACHE_EXPIRATION":"3600000","COCKROACH_DATABASE":"beteps","COCKROACH_HOSTNAME":"syx-cockroachdb-public.cockroach-system.svc.cluster.local","COCKROACH_POOL":"10","COCKROACH_PORT":"26257","COCKROACH_SSL":"false","COCKROACH_TABLE_NAME":"events","COCKROACH_USERNAME":"root","FILESYSTEM_DIR_PATH":"/tmp/beteps","KAFKA_HOSTS":"redpanda.redpanda.svc.cluster.local:9092","PORT":"4000","RELEASE_COOKIE":"cookie","STORAGE_ADAPTER":"cockroach"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2021-06-08T10:00:23Z","labels":{"app-name":"beteps"},"managedFields":[{"apiVersion":"v1","fieldsType":"FieldsV1","fieldsV1":{"f:data":{".":{},"f:BETFRONT_TBII_URL":{},"f:CACHE_EXPIRATION":{},"f:COCKROACH_DATABASE":{},"f:COCKROACH_HOSTNAME":{},"f:COCKROACH_POOL":{},"f:COCKROACH_PORT":{},"f:COCKROACH_SSL":{},"f:COCKROACH_TABLE_NAME":{},"f:COCKROACH_USERNAME":{},"f:FILESYSTEM_DIR_PATH":{},"f:KAFKA_HOSTS":{},"f:PORT":{},"f:RELEASE_COOKIE":{},"f:STORAGE_ADAPTER":{}},"f:metadata":{"f:annotations":{".":{},"f:kubectl.kubernetes.io/last-applied-configuration":{}},"f:labels":{".":{},"f:app-name":{}}}},"manager":"kubectl-client-side-apply","operation":"Update","time":"2021-06-15T21:12:21Z"}],"name":"beteps-config","namespace":"beteps","selfLink":"/api/v1/namespaces/beteps/configmaps/beteps-config","uid":"32209d67-738b-4890-843a-9ffd003bf245"}}
   name: beteps-config
-  namespace: beteps
   labels:
     app-name: beteps
 data:
