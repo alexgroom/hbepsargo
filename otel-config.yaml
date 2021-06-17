@@ -1,20 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: >
-      {"apiVersion":"v1","data":{"otel-collector-config.yml":"receivers:\n 
-      otlp:\n    protocols:\n      grpc:\n        endpoint:
-      \"0.0.0.0:55680\"\n      http:\n        endpoint:
-      \"0.0.0.0:55681\"\nprocessors:\n  batch:\n    send_batch_size: 1024\n   
-      timeout: 5s\nexporters:\n  zipkin:\n    endpoint:
-      \"http://zipkin.telemetry.svc.cluster.local:9411/api/v2/spans\"\nextensions:\n 
-      zpages: {}\nservice:\n  extensions: [zpages]\n  pipelines:\n   
-      traces:\n      receivers: [otlp]\n      processors: [batch]\n     
-      exporters:
-      [zipkin]\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app-name":"beteps"},"name":"otel-config","namespace":"beteps"}}
   name: otel-config
-  namespace: beteps
   labels:
     app-name: beteps
 data:
