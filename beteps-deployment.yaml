@@ -1,0 +1,317 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '15'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"name":"beteps"},"name":"beteps-deployment","namespace":"beteps"},"spec":{"replicas":1,"selector":{"matchLabels":{"name":"beteps"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"annotations":{"prometheus.io/port":"8889","prometheus.io/scrape":"true"},"labels":{"app":"beteps","name":"beteps"}},"spec":{"containers":[{"args":["start"],"env":[{"name":"HOSTNAME","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}}],"envFrom":[{"configMapRef":{"name":"beteps-config"}}],"image":"ghcr.io/bet01/beteps:v0.0.17","imagePullPolicy":"IfNotPresent","livenessProbe":{"httpGet":{"path":"/","port":4000}},"name":"beteps","ports":[{"containerPort":4000,"name":"http","protocol":"TCP"}],"readinessProbe":{"httpGet":{"path":"/","port":4000}},"resources":{},"securityContext":{"capabilities":{"drop":["ALL"]}},"volumeMounts":[]},{"args":["--config=/etc/otel-collector-config.yml"],"image":"otel/opentelemetry-collector-contrib-dev:latest","imagePullPolicy":"IfNotPresent","name":"otel","ports":[{"containerPort":55680},{"containerPort":55681}],"volumeMounts":[{"mountPath":"/etc/otel-collector-config.yml","name":"otel-config","subPath":"otel-collector-config.yml"}]}],"imagePullSecrets":[{"name":"gcr-json-key"},{"name":"ghcr-json-key"}],"securityContext":{},"serviceAccountName":"beteps","volumes":[{"configMap":{"name":"otel-config"},"name":"otel-config"}]}}}}
+  selfLink: /apis/apps/v1/namespaces/beteps/deployments/beteps-deployment
+  resourceVersion: '23085541'
+  name: beteps-deployment
+  uid: 2d754c08-5013-4e71-8499-5fc14640adeb
+  creationTimestamp: '2021-06-02T14:58:58Z'
+  generation: 28
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-06-03T14:26:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:imagePullSecrets':
+                .: {}
+                'k:{"name":"gcr-json-key"}':
+                  .: {}
+                  'f:name': {}
+                'k:{"name":"ghcr-json-key"}':
+                  .: {}
+                  'f:name': {}
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-06-15T21:04:23Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:annotations':
+                .: {}
+                'f:prometheus.io/port': {}
+                'f:prometheus.io/scrape': {}
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:name': {}
+            'f:spec':
+              'f:volumes':
+                .: {}
+                'k:{"name":"otel-config"}':
+                  .: {}
+                  'f:configMap':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:name': {}
+                  'f:name': {}
+              'f:containers':
+                'k:{"name":"beteps"}':
+                  'f:envFrom': {}
+                  'f:image': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:args': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"HOSTNAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef':
+                          .: {}
+                          'f:apiVersion': {}
+                          'f:fieldPath': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:capabilities':
+                      .: {}
+                      'f:drop': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":4000,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:name': {}
+                'k:{"name":"otel"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/etc/otel-collector-config.yml"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:subPath': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:args': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":55680,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":55681,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:serviceAccount': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:imagePullSecrets':
+                'k:{"name":"gcr-json-key"}':
+                  .: {}
+                  'f:name': {}
+                'k:{"name":"ghcr-json-key"}':
+                  .: {}
+                  'f:name': {}
+              'f:serviceAccountName': {}
+              'f:securityContext': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-06-15T21:23:17Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+  namespace: beteps
+  labels:
+    name: beteps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: beteps
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: beteps
+        name: beteps
+      annotations:
+        prometheus.io/port: '8889'
+        prometheus.io/scrape: 'true'
+    spec:
+      restartPolicy: Always
+      serviceAccountName: beteps
+      imagePullSecrets:
+        - name: gcr-json-key
+        - name: ghcr-json-key
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      securityContext: {}
+      containers:
+        - resources: {}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4000
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          name: beteps
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4000
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          env:
+            - name: HOSTNAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - name: http
+              containerPort: 4000
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          terminationMessagePolicy: File
+          envFrom:
+            - configMapRef:
+                name: beteps-config
+          image: 'ghcr.io/bet01/beteps:v0.0.17'
+          args:
+            - start
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: otel
+          ports:
+            - containerPort: 55680
+              protocol: TCP
+            - containerPort: 55681
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: otel-config
+              mountPath: /etc/otel-collector-config.yml
+              subPath: otel-collector-config.yml
+          terminationMessagePolicy: File
+          image: 'otel/opentelemetry-collector-contrib-dev:latest'
+          args:
+            - '--config=/etc/otel-collector-config.yml'
+      serviceAccount: beteps
+      volumes:
+        - name: otel-config
+          configMap:
+            name: otel-config
+            defaultMode: 420
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 28
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-06-15T21:16:17Z'
+      lastTransitionTime: '2021-06-15T21:16:17Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "beteps-deployment-7b5b97b649" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-06-15T21:23:17Z'
+      lastTransitionTime: '2021-06-15T21:23:17Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
