@@ -1,12 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  annotations:
-    pv.kubernetes.io/bind-completed: 'yes'
-    pv.kubernetes.io/bound-by-controller: 'yes'
   name: beteps-fileserver-claim
-  finalizers:
-    - kubernetes.io/pvc-protection
 spec:
   accessModes:
     - ReadWriteOnce
